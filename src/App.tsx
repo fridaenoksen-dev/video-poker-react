@@ -1,11 +1,17 @@
 import "./App.css";
+import { Routes, Route } from "react-router";
+import VelgSpiller from "./pages/VelgSpiller";
+import Regler from "./pages/Regler";
+import Spill from "./pages/Spill";
 
 function App() {
   return (
     <>
-      <section>
-        <h1>Hei på deg</h1>
-      </section>
+      <Routes>
+        <Route path="/" element={<VelgSpiller />} />
+        <Route path="/spill" element={<Spill />} />
+        <Route path="/regler" element={<Regler />} />
+      </Routes>
     </>
   );
 }
