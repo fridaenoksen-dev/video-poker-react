@@ -1,5 +1,17 @@
+import { useGameStore } from "../store/gameStore";
+
 function Spill() {
-  return <div>Spinn</div>;
+  const hand = useGameStore((state) => state.hand);
+
+  return (
+    <div>
+      {hand.map((card, index) => (
+        <p key={index}>
+          {card.suit} - {card.value}
+        </p>
+      ))}
+    </div>
+  );
 }
 
 export default Spill;

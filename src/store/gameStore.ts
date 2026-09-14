@@ -20,7 +20,7 @@ type GameStore = {
  * before confirming the discard.
  */
 
-export const useGameStore = create<GameStore>(() => ({
+export const useGameStore = create<GameStore>()(() => ({
   deck: [],
   hand: [],
   selectedForDiscard: [],
