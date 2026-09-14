@@ -1,4 +1,4 @@
-import { Suit, Value, PlayingCard } from "../types/PlayingCards";
+import type { Suit, Value, PlayingCard } from "../types/PlayingCards";
 
 const suits: Suit[] = ["clubs", "diamonds", "hearts", "spades"];
 const values: Value[] = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
