@@ -1,5 +1,12 @@
 import type { PlayingCard } from "../types/PlayingCards";
 
+/**
+ * Returns a shuffled copy of the deck using the Fisher-Yates shuffle algorithm. While keeping the original deck unchanged.
+ *
+ * @param deck - The deck of cards to shuffle.
+ * @returns A new array with the same cards in randomized order
+ */
+
 export function shuffleDeck(deck: PlayingCard[]): PlayingCard[] {
   const deckCopy = [...deck];
 
