@@ -10,3 +10,8 @@ export function generateDeck(): PlayingCard[] {
 
   return combinations;
 }
+
+/* Jeg har hentet typene fra PlayingCards og satt opp funksjonen for å kombinere Suits og Values.
+Funksjonen går igjennom hver farge og for hver verdi lager den et kort. Totalt 13 av hver farge.
+Med .flatMap får jeg en samlet alle kombinasjonene til én liste, istedenfor lister i lister.
+ */
