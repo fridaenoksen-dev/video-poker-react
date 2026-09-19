@@ -30,6 +30,12 @@ export const useGameStore = create<GameStore>()((set) => ({
   selectedForDiscard: [],
   discardedCards: [],
   currentPlayer: null,
+
+  /**
+   * Starts a new round: Generates and shuffles a full deck,
+   * dels 5 cards to the players hand and stores the rest as the remaining deck.
+   */
+
   startNewRound: () => {
     const newDeck = shuffleDeck(generateDeck());
     const newHand = newDeck.slice(0, 5);
@@ -37,6 +43,15 @@ export const useGameStore = create<GameStore>()((set) => ({
 
     set({ deck: remainingDeck, hand: newHand });
   },
+
+  /**
+   *
+   * Toggles whether a card at the given index is marked for discarding.
+   * If its already marked, its unmarked, and vice versa.
+   *
+   * @param index: The index of the card in `hand`to toggle.
+   */
+
   toggleDiscard: (index) => {
     set((state) => {
       if (state.selectedForDiscard.includes(index)) {
