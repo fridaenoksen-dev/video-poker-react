@@ -5,11 +5,13 @@ function Spill() {
   const startNewRound = useGameStore((state) => state.startNewRound);
   const toggleDiscard = useGameStore((state) => state.toggleDiscard);
   const selectedForDiscard = useGameStore((state) => state.selectedForDiscard);
+  const confirmDiscard = useGameStore((state) => state.confirmDiscard);
 
   return (
     <div>
       <button onClick={startNewRound}>Start ny runde</button>
-      <p>Kast kortene: {selectedForDiscard.join(", ")}</p>
+      <button onClick={confirmDiscard}>Bekreft kasting av kort</button>
+      <p>Kast: {selectedForDiscard.join(", ")}</p>
       {hand.map((card, index) => (
         <p key={index}>
           <button onClick={() => toggleDiscard(index)}>

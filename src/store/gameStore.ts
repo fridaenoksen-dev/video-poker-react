@@ -12,6 +12,7 @@ type GameStore = {
   currentPlayer: Player | null;
   startNewRound: () => void;
   toggleDiscard: (index: number) => void;
+  confirmDiscard(): void;
 };
 
 /**
@@ -63,6 +64,33 @@ export const useGameStore = create<GameStore>()((set) => ({
       } else {
         return { selectedForDiscard: [...state.selectedForDiscard, index] };
       }
+    });
+  },
+
+  /**
+   * Confirms the discard: Moves the cards marked in `selectedForDiscard` from `hand`to `DiscardedCards`
+   * and replaces them with new cards drawn from the top of `deck`.
+   * Clears `selectedForDiscard`afterwards.
+   */
+  confirmDiscard: () => {
+    set((state) => {
+      const kept = state.hand.filter(
+        (card, index) => !state.selectedForDiscard.includes(index),
+      );
+
+      const removed = state.hand.filter((card, index) =>
+        state.selectedForDiscard.includes(index),
+      );
+
+      const newCards = state.deck.slice(0, removed.length);
+      const remainingDeck = state.deck.slice(removed.length);
+
+      return {
+        hand: [...kept, ...newCards],
+        deck: remainingDeck,
+        discardedCards: [...state.discardedCards, ...removed],
+        selectedForDiscard: [],
+      };
     });
   },
 }));
