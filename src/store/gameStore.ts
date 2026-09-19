@@ -11,6 +11,7 @@ type GameStore = {
   discardedCards: PlayingCard[];
   currentPlayer: Player | null;
   startNewRound: () => void;
+  toggleDiscard: (index: number) => void;
 };
 
 /**
@@ -35,5 +36,18 @@ export const useGameStore = create<GameStore>()((set) => ({
     const remainingDeck = newDeck.slice(5);
 
     set({ deck: remainingDeck, hand: newHand });
+  },
+  toggleDiscard: (index) => {
+    set((state) => {
+      if (state.selectedForDiscard.includes(index)) {
+        return {
+          selectedForDiscard: state.selectedForDiscard.filter(
+            (i) => i !== index,
+          ),
+        };
+      } else {
+        return { selectedForDiscard: [...state.selectedForDiscard, index] };
+      }
+    });
   },
 }));
