@@ -1,4 +1,5 @@
 import { useGameStore } from "../store/gameStore";
+import Card from "../components/Card";
 
 function Spill() {
   const hand = useGameStore((state) => state.hand);
@@ -8,17 +9,14 @@ function Spill() {
   const confirmDiscard = useGameStore((state) => state.confirmDiscard);
 
   return (
-    <div>
+    <div className="game-controls">
+      <div className="hand">
+        {hand.map((card, index) => (
+          <Card key={index} card={card} />
+        ))}
+      </div>
       <button onClick={startNewRound}>Start ny runde</button>
       <button onClick={confirmDiscard}>Bekreft kasting av kort</button>
-      <p>Kast: {selectedForDiscard.join(", ")}</p>
-      {hand.map((card, index) => (
-        <p key={index}>
-          <button onClick={() => toggleDiscard(index)}>
-            {card.suit} - {card.value}
-          </button>
-        </p>
-      ))}
     </div>
   );
 }
