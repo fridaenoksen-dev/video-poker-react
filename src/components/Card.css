@@ -22,7 +22,7 @@
   grid-template-areas: "topleft . topright" ". center ." "bottomleft . bottomright";
   width: 160px;
   height: 224px;
-  border: 2px solid black;
+  border: 2px solid #996515;
   border-radius: 8px;
   background: white;
 }

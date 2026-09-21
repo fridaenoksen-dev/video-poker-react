@@ -1,0 +1,6 @@
+.card-back {
+  background-image: url("../assets/cardBack.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
