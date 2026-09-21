@@ -1,0 +1,72 @@
+.game-controls {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.hand {
+  display: flex;
+  gap: 16px;
+}
+
+.playing-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  place-items: center;
+  grid-template-areas: "topleft . topright" ". center ." "bottomleft . bottomright";
+  width: 160px;
+  height: 224px;
+  border: 2px solid black;
+  border-radius: 8px;
+  background: white;
+}
+
+.rank-top-suit {
+  grid-area: topleft;
+}
+
+.rank-top-number {
+  grid-area: topright;
+}
+
+.suit-center {
+  grid-area: center;
+}
+
+.rank-bottom-suit {
+  grid-area: bottomright;
+  transform: rotate(180deg);
+}
+
+.rank-bottom-number {
+  grid-area: bottomleft;
+  transform: rotate(180deg);
+}
+
+.playing-card img {
+  width: 16px;
+  height: 16px;
+}
+
+.playing-card .suit-center img {
+  width: 36px;
+  height: 36px;
+}
+
+.playing-card.selected {
+  position: relative;
+}
+
+.playing-card.playing-card.selected::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: inherit;
+}
