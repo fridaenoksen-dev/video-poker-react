@@ -12,7 +12,12 @@ function Spill() {
     <div className="game-controls">
       <div className="hand">
         {hand.map((card, index) => (
-          <Card key={index} card={card} />
+          <Card
+            key={index}
+            card={card}
+            isSelected={selectedForDiscard.includes(index)}
+            onClick={() => toggleDiscard(index)}
+          />
         ))}
       </div>
       <button onClick={startNewRound}>Start ny runde</button>

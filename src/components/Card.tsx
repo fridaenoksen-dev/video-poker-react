@@ -8,6 +8,7 @@ import spadesIcon from "../assets/spadesIcon.png";
 type CardProps = {
   card: PlayingCard;
   isSelected?: boolean;
+  onClick: () => void;
 };
 
 const suitIcons: Record<Suit, string> = {
@@ -17,9 +18,12 @@ const suitIcons: Record<Suit, string> = {
   spades: spadesIcon,
 };
 
-function Card({ card, isSelected }: CardProps) {
+function Card({ card, isSelected, onClick }: CardProps) {
   return (
-    <div className="playing-card">
+    <div
+      className={`playing-card ${isSelected ? "selected" : ""}`}
+      onClick={onClick}
+    >
       <div className="rank-top-suit">
         <img src={suitIcons[card.suit]} alt={card.suit} />
       </div>

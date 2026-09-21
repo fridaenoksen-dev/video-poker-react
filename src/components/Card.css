@@ -58,3 +58,15 @@
   width: 36px;
   height: 36px;
 }
+
+.playing-card.selected {
+  position: relative;
+}
+
+.playing-card.playing-card.selected::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: inherit;
+}
