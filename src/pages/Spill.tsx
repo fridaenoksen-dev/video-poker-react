@@ -1,5 +1,6 @@
 import { useGameStore } from "../store/gameStore";
 import Card from "../components/Card";
+import { isTwoPair } from "../utils/isTwoPair";
 
 function Spill() {
   const hand = useGameStore((state) => state.hand);
@@ -8,6 +9,7 @@ function Spill() {
   const selectedForDiscard = useGameStore((state) => state.selectedForDiscard);
   const confirmDiscard = useGameStore((state) => state.confirmDiscard);
 
+  console.log(isTwoPair(hand));
   return (
     <div className="game-controls">
       <div className="hand">
