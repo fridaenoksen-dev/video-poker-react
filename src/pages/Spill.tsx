@@ -1,6 +1,6 @@
 import { useGameStore } from "../store/gameStore";
 import Card from "../components/Card";
-import { isTwoPair } from "../utils/isTwoPair";
+import { isFullHouse } from "../utils/isFullHouse";
 
 function Spill() {
   const hand = useGameStore((state) => state.hand);
