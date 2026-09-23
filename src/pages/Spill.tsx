@@ -9,7 +9,6 @@ function Spill() {
   const selectedForDiscard = useGameStore((state) => state.selectedForDiscard);
   const confirmDiscard = useGameStore((state) => state.confirmDiscard);
 
-  console.log(isTwoPair(hand));
   return (
     <div className="game-controls">
       <div className="hand">
