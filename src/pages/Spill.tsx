@@ -1,6 +1,5 @@
 import { useGameStore } from "../store/gameStore";
 import Card from "../components/Card";
-import { isStraight } from "../utils/isStraight";
 
 function Spill() {
   const hand = useGameStore((state) => state.hand);
@@ -9,7 +8,6 @@ function Spill() {
   const selectedForDiscard = useGameStore((state) => state.selectedForDiscard);
   const confirmDiscard = useGameStore((state) => state.confirmDiscard);
 
-  console.log(isStraight(hand));
   return (
     <div className="game-controls">
       <div className="hand">
