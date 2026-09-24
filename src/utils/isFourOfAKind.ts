@@ -8,7 +8,7 @@ import { getValueCounts } from "./getValueCounts";
  * @returns True if any value appears exactly four times
  */
 
-export function isThreeOfAKind(hand: PlayingCard[]): boolean {
+export function isFourOfAKind(hand: PlayingCard[]): boolean {
   const occurrences = Array.from(getValueCounts(hand).values());
   return occurrences.includes(4);
 }
