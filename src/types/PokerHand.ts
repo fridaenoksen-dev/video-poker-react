@@ -6,6 +6,6 @@ export type PokerHand =
   | "straight"
   | "flush"
   | "fullHouse"
-  | "FourOfAKind"
+  | "fourOfAKind"
   | "straightFlush"
   | "royalFlush";
