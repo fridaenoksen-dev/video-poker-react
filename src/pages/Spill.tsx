@@ -1,7 +1,6 @@
 import { useGameStore } from "../store/gameStore";
 import Card from "../components/Card";
-import { isFullHouse } from "../utils/isFullHouse";
-import { isPair } from "../utils/isPair";
+import CurrentHand from "../components/CurrentHand";
 
 function Spill() {
   const hand = useGameStore((state) => state.hand);
@@ -12,6 +11,7 @@ function Spill() {
 
   return (
     <div className="game-controls">
+      <CurrentHand />
       <div className="hand">
         {hand.map((card, index) => (
           <Card
