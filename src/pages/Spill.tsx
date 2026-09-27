@@ -1,33 +1,7 @@
-import { useGameStore } from "../store/gameStore";
-import Card from "../components/Card";
-import CurrentHand from "../components/CurrentHand";
-import PayoutTable from "../components/PayoutTable";
+import Game from "../components/Game";
 
 function Spill() {
-  const hand = useGameStore((state) => state.hand);
-  const startNewRound = useGameStore((state) => state.startNewRound);
-  const toggleDiscard = useGameStore((state) => state.toggleDiscard);
-  const selectedForDiscard = useGameStore((state) => state.selectedForDiscard);
-  const confirmDiscard = useGameStore((state) => state.confirmDiscard);
-
-  return (
-    <div className="game-controls">
-      <PayoutTable />
-      <CurrentHand />
-      <div className="hand">
-        {hand.map((card, index) => (
-          <Card
-            key={index}
-            card={card}
-            isSelected={selectedForDiscard.includes(index)}
-            onClick={() => toggleDiscard(index)}
-          />
-        ))}
-      </div>
-      <button onClick={startNewRound}>Start ny runde</button>
-      <button onClick={confirmDiscard}>Bekreft kasting av kort</button>
-    </div>
-  );
+  return <Game />;
 }
 
 export default Spill;
