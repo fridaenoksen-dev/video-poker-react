@@ -1,5 +1,6 @@
 import type { PokerHand } from "../types/PokerHand";
 import { pokerHandLabels } from "../utils/pokerHandLabels";
+import "./PayoutTable.css";
 
 type PayoutRow = {
   hand: PokerHand;
@@ -27,7 +28,7 @@ const payoutTable: PayoutRow[] = [
 
 function PayoutTable() {
   return (
-    <table>
+    <table className="payout-table">
       <tbody>
         {payoutTable.map((row) => (
           <tr key={row.hand}>

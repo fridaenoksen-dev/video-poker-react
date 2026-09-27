@@ -1,0 +1,29 @@
+a {
+  color: #d4af37;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.nav {
+  display: flex;
+  gap: 1.2rem;
+  padding: 2rem;
+  flex-direction: row;
+  align-items: center;
+}
+
+button {
+  padding: 12px 28px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 2px solid #d4af37;
+  background: #7a1f2b;
+  color: #f5e9c8;
+}
+
+button:hover {
+  background: #8f2532;
+}

@@ -5,6 +5,8 @@ import PayoutTable from "./PayoutTable";
 import TotalCoins from "./TotalCoins";
 import CurrentBet from "./CurrentBet";
 import "./Game.css";
+import { Link } from "react-router";
+import "../App.css";
 
 /**
  * The main gamoe board that shows the payout table,
@@ -20,6 +22,10 @@ function Game() {
 
   return (
     <div className="game-board">
+      <div className="nav">
+        <Link to="/">Bytt spiller</Link>
+        <Link to="/regler">Regler</Link>
+      </div>
       <PayoutTable />
       <div className="game-info">
         <TotalCoins />
@@ -38,8 +44,8 @@ function Game() {
             />
           ))}
         </div>
-        <button onClick={startNewRound}>Start ny runde</button>
         <button onClick={confirmDiscard}>Bekreft kasting av kort</button>
+        <button onClick={startNewRound}>Start ny runde</button>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useGameStore } from "../store/gameStore";
+import { Link } from "react-router";
 
 /**
  * Lets the user pick an existing player or create a new one.
@@ -45,6 +46,10 @@ function VelgSpiller() {
         placeholder="Navn på ny spiller"
       />
       <button onClick={handleCreatePlayer}>Opprett ny spiller</button>
+      <br />
+      <div className="nav">
+        <Link to="/regler">Se reglene</Link>
+      </div>
     </div>
   );
 }

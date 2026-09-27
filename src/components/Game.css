@@ -4,9 +4,23 @@
   align-items: center;
   gap: 16px;
   padding: 16px;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .game-info {
   display: flex;
   gap: 24px;
+}
+
+.game-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.hand {
+  display: flex;
+  gap: 16px;
 }
