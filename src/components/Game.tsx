@@ -4,6 +4,7 @@ import CurrentHand from "./CurrentHand";
 import PayoutTable from "./PayoutTable";
 import TotalCoins from "./TotalCoins";
 import CurrentBet from "./CurrentBet";
+import "./Game.css";
 
 /**
  * The main gamoe board that shows the payout table,
@@ -18,10 +19,12 @@ function Game() {
   const confirmDiscard = useGameStore((state) => state.confirmDiscard);
 
   return (
-    <div>
+    <div className="game-board">
       <PayoutTable />
-      <TotalCoins />
-      <CurrentBet />
+      <div className="game-info">
+        <TotalCoins />
+        <CurrentBet />
+      </div>
       <CurrentHand />
 
       <div className="game-controls">
