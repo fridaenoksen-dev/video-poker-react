@@ -5,6 +5,7 @@ import { shuffleDeck } from "../utils/shuffleDeck";
 import { generateDeck } from "../utils/generateDeck";
 
 type GameStore = {
+  players: Player[];
   deck: PlayingCard[];
   hand: PlayingCard[];
   selectedForDiscard: number[];
@@ -13,6 +14,8 @@ type GameStore = {
   startNewRound: () => void;
   toggleDiscard: (index: number) => void;
   confirmDiscard(): void;
+  addPlayer: (name: string) => void;
+  selectPlayer: (id: string) => void;
 };
 
 /**
@@ -26,6 +29,7 @@ type GameStore = {
  */
 
 export const useGameStore = create<GameStore>()((set) => ({
+  players: [],
   deck: [],
   hand: [],
   selectedForDiscard: [],
@@ -91,6 +95,25 @@ export const useGameStore = create<GameStore>()((set) => ({
         discardedCards: [...state.discardedCards, ...removed],
         selectedForDiscard: [],
       };
+    });
+  },
+
+  addPlayer: (name) => {
+    set((state) => {
+      const newPlayer: Player = {
+        id: crypto.randomUUID(),
+        name,
+        coins: 100,
+      };
+
+      return { players: [...state.players, newPlayer] };
+    });
+  },
+
+  selectPlayer: (id) => {
+    set((state) => {
+      const player = state.players.find((p) => p.id === id);
+      return { currentPlayer: player ?? null };
     });
   },
 }));
