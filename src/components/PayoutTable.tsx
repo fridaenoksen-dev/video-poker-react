@@ -19,6 +19,12 @@ const payoutTable: PayoutRow[] = [
   { hand: "highCard", payout: 0 },
 ];
 
+/**
+ *
+ * @returns Displays the payout table for each of the poker hands.
+ * In highest to lowest.
+ */
+
 function PayoutTable() {
   return (
     <table>
