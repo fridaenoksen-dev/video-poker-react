@@ -27,3 +27,23 @@ button {
 button:hover {
   background: #8f2532;
 }
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.betting-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.betting-buttons button {
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
+.betting-selected {
+  background: #d4af37;
+  color: #1a1a1a;
+}

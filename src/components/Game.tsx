@@ -19,6 +19,9 @@ function Game() {
   const toggleDiscard = useGameStore((state) => state.toggleDiscard);
   const selectedForDiscard = useGameStore((state) => state.selectedForDiscard);
   const confirmDiscard = useGameStore((state) => state.confirmDiscard);
+  const roundActive = useGameStore((state) => state.roundActive);
+  const setBet = useGameStore((state) => state.setBet);
+  const currentBet = useGameStore((state) => state.currentBet);
 
   return (
     <div className="game-board">
@@ -44,8 +47,24 @@ function Game() {
             />
           ))}
         </div>
-        <button onClick={confirmDiscard}>Bekreft kasting av kort</button>
-        <button onClick={startNewRound}>Start ny runde</button>
+        <div className="betting-buttons">
+          {[1, 2, 3, 4, 5].map((amount) => (
+            <button
+              key={amount}
+              onClick={() => setBet(amount)}
+              disabled={roundActive}
+              className={amount === currentBet ? "betting-selected" : ""}
+            >
+              {amount}
+            </button>
+          ))}
+        </div>
+        <button onClick={confirmDiscard} disabled={!roundActive}>
+          Bekreft kasting av kort
+        </button>
+        <button onClick={startNewRound} disabled={roundActive}>
+          Start ny runde
+        </button>
       </div>
     </div>
   );

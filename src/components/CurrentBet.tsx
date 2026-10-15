@@ -1,14 +1,13 @@
 import { useGameStore } from "../store/gameStore";
 
 /**
- * Displays the curretn bet amount.
- * Fixed for now to 1.
+ * Displays the curretn bet amount from the store.
  */
 
 function CurrentBet() {
-  const bet = 1;
+  const currentBet = useGameStore((state) => state.currentBet);
 
-  return <p>Innsats: {bet}</p>;
+  return <p>Innsats: {currentBet}</p>;
 }
 
 export default CurrentBet;

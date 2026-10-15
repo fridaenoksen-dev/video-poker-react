@@ -19,6 +19,9 @@ type GameStore = {
   confirmDiscard(): void;
   addPlayer: (name: string) => void;
   selectPlayer: (id: string) => void;
+  currentBet: number;
+  setBet: (amount: number) => void;
+  roundActive: boolean;
 };
 
 /**
@@ -34,11 +37,13 @@ export const useGameStore = create<GameStore>()(
   persist(
     (set) => ({
       players: [],
+      currentBet: 1,
       deck: [],
       hand: [],
       selectedForDiscard: [],
       discardedCards: [],
       currentPlayer: null,
+      roundActive: false,
 
       /**
        * Starts a new round: Generates and shuffles a full deck,
@@ -50,7 +55,30 @@ export const useGameStore = create<GameStore>()(
         const newHand = newDeck.slice(0, 5);
         const remainingDeck = newDeck.slice(5);
 
-        set({ deck: remainingDeck, hand: newHand });
+        set((state) => {
+          if (!state.currentPlayer) return {};
+          if (state.roundActive) return {};
+          if (state.currentPlayer.coins < state.currentBet) return {};
+
+          const updatedCurrentPlayer = {
+            ...state.currentPlayer,
+            coins: state.currentPlayer.coins - state.currentBet,
+          };
+
+          const updatedPlayers = state.players.map((player) =>
+            player.id === state.currentPlayer?.id
+              ? { ...player, coins: player.coins - state.currentBet }
+              : player,
+          );
+
+          return {
+            deck: remainingDeck,
+            hand: newHand,
+            roundActive: true,
+            currentPlayer: updatedCurrentPlayer,
+            players: updatedPlayers,
+          };
+        });
       },
 
       /**
@@ -82,6 +110,7 @@ export const useGameStore = create<GameStore>()(
        */
       confirmDiscard: () => {
         set((state) => {
+          if (!state.roundActive) return {};
           const kept = state.hand.filter(
             (card, index) => !state.selectedForDiscard.includes(index),
           );
@@ -95,8 +124,8 @@ export const useGameStore = create<GameStore>()(
           const newHand = [...kept, ...newCards];
 
           const result = evaluateHand(newHand);
-          const PayoutRow = payoutTable.find((row) => row.hand === result);
-          const winnings = PayoutRow?.payout ?? 0;
+          const payoutRow = payoutTable.find((row) => row.hand === result);
+          const winnings = (payoutRow?.payout ?? 0) * state.currentBet;
 
           const updatedCurrentPlayer = state.currentPlayer
             ? {
@@ -118,6 +147,7 @@ export const useGameStore = create<GameStore>()(
             selectedForDiscard: [],
             currentPlayer: updatedCurrentPlayer,
             players: updatedPlayers,
+            roundActive: false,
           };
         });
       },
@@ -154,6 +184,15 @@ export const useGameStore = create<GameStore>()(
           const player = state.players.find((p) => p.id === id);
           return { currentPlayer: player ?? null };
         });
+      },
+      /**
+       * Sets the amount for betting the next round
+       *
+       * @param amount the number of coins to bet.
+       */
+
+      setBet: (amount) => {
+        set({ currentBet: amount });
       },
     }),
     {
