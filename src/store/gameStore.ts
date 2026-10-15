@@ -4,6 +4,8 @@ import type { PlayingCard } from "../types/PlayingCards";
 import type { Player } from "../types/Player";
 import { shuffleDeck } from "../utils/shuffleDeck";
 import { generateDeck } from "../utils/generateDeck";
+import { evaluateHand } from "../utils/evaluateHand";
+import { payoutTable } from "../utils/payoutTable";
 
 type GameStore = {
   players: Player[];
@@ -90,12 +92,32 @@ export const useGameStore = create<GameStore>()(
 
           const newCards = state.deck.slice(0, removed.length);
           const remainingDeck = state.deck.slice(removed.length);
+          const newHand = [...kept, ...newCards];
+
+          const result = evaluateHand(newHand);
+          const PayoutRow = payoutTable.find((row) => row.hand === result);
+          const winnings = PayoutRow?.payout ?? 0;
+
+          const updatedCurrentPlayer = state.currentPlayer
+            ? {
+                ...state.currentPlayer,
+                coins: state.currentPlayer.coins + winnings,
+              }
+            : null;
+
+          const updatedPlayers = state.players.map((player) =>
+            player.id === state.currentPlayer?.id
+              ? { ...player, coins: player.coins + winnings }
+              : player,
+          );
 
           return {
-            hand: [...kept, ...newCards],
+            hand: newHand,
             deck: remainingDeck,
             discardedCards: [...state.discardedCards, ...removed],
             selectedForDiscard: [],
+            currentPlayer: updatedCurrentPlayer,
+            players: updatedPlayers,
           };
         });
       },

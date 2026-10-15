@@ -1,19 +1,3 @@
-.game-controls {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.hand {
-  display: flex;
-  gap: 16px;
-}
-
 .playing-card {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
