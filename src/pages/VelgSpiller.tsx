@@ -17,6 +17,7 @@ function VelgSpiller() {
   const navigate = useNavigate();
 
   function handleCreatePlayer() {
+    event?.preventDefault();
     if (name.trim() === "") return;
     addPlayer(name.trim());
     setName("");
@@ -28,9 +29,12 @@ function VelgSpiller() {
   }
 
   return (
-    <div>
+    <div className="page">
       <h1>Velg spiller</h1>
-      <ul>
+      <div className="nav">
+        <Link to="/regler">Se reglene</Link>
+      </div>
+      <ul className="player-list">
         {players.map((player) => (
           <li key={player.id}>
             <button onClick={() => handleSelectPlayer(player.id)}>
@@ -39,17 +43,16 @@ function VelgSpiller() {
           </li>
         ))}
       </ul>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Navn på ny spiller"
-      />
-      <button onClick={handleCreatePlayer}>Opprett ny spiller</button>
-      <br />
-      <div className="nav">
-        <Link to="/regler">Se reglene</Link>
-      </div>
+      <form className="new-player-form" onSubmit={handleCreatePlayer}>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Navn på ny spiller"
+          aria-label="Navn på ny spiller"
+        />
+        <button type="submit">Opprett ny spiller</button>
+      </form>
     </div>
   );
 }

@@ -1,13 +1,12 @@
 import PayoutTable from "../components/PayoutTable";
 import { Link } from "react-router";
-import "../App.css";
 
 /**
  * Explains the rules and shows the payoutTable.
  */
 function Regler() {
   return (
-    <div>
+    <div className="page">
       <h1>Regler</h1>
       <div className="nav">
         <Link to="/">Gå tilbake til valg av spiller</Link>
