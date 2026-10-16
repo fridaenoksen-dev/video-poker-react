@@ -14,8 +14,14 @@ Noen bevisste valg og avveininger underveis
 - Card og CardBack er to separate komponenter. Tanken var at de kunne gjenbrukes uten unødvendig kompleksitet.
 - Det er satt opp standard pokerrangering, ikke noe ekstra regler o.l. Tanken var at jeg heller kunne legge til mer og sette meg inn i andre regler om jeg hadde tid.
 - Bruker engelsk i koden, for å følge vanlig konvensjon. Mens sidenavn, URLer og tekst spilleren ser er på norsk.
-- CurrentBet har foreløpig en fast verdi på grunn av tidspresset.
 
 Det har vært mye småfeil og testing underveis. Men strategien har vært å gjøre litt og litt og teste fortløpende hele tiden så jeg ikke skal trenge å gå for mye tilbake og justere. Så har det blitt lagt inn nye ting der det er relevant når jeg kommer til det punktet.
 
-Med mer tid ville jeg prioritert å få opp et fullverdig innsatssystem og utbetalingen til spilleren sin lommebok. Så er det alt med design og responsivitet.
+Ny innleveringsrunde
+Siden jeg ikke rakk å få på plass kravene i oppgaven innen fristen, har jeg nå i andre runde fått justert manglene. I første versjon hadde jeg alle komponentene og kjernelogikken. En mangel var at myntbeholdningen ikke endret seg og innsatsen var kun 1. Så i denne omgangen har jeg fått justert dette slik at en runde faktisk koster noe og betaler ut noe. Jeg hadde også en evigående runde som aldri sluttet, så der har jeg lagt til at man sjekker om en runde er aktiv og gråer ut/deaktiverer knappene som ikke kan brukes i den runden.
+
+Noen bevisste valg og avveininger underveis i andre innlevering
+
+- Spilleren kan velge innsats før runden starter. Innsatsen blir trukket når runden begynner. Utbetalingen fra payoutTable ganges med innsatsen. startNewRound gjør ikke noe om spilleren har færre mynter enn innsatsen.
+- Spilleren har kun et trekk per runde. Noe som vistnok er vanlig i videopoker. Men det hjalp pgså med å holde logikken rundt en runde ryddig.
+- Trekk av innsats og utbetalingen skjer i startNewRound og i confirmDiscard. Da blir både currentPlayer og riktig spiller i players oppdatert og myntbeholdningen overlever navigasjon og ny innlasting av siden.
