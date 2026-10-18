@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   --color-green: #0b5d3b;
   --color-green-dark: #073d27;
@@ -47,12 +53,17 @@ input:focus-visible {
 .nav {
   display: flex;
   margin-bottom: 2rem;
+  flex-direction: row;
+  justify-content: center;
   gap: 1.2rem;
-  padding: 0.75rem;
-  display: inline-block;
+  flex-wrap: wrap;
+}
+
+.nav a {
   border: 2px solid var(--color-gold);
   border-radius: 8px;
   font-size: 16px;
+  padding: 0.75rem;
 }
 
 button {
@@ -75,6 +86,8 @@ button:disabled {
 
 .betting-buttons {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -95,10 +108,12 @@ button:disabled {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
 .player-list button {
-  width: 30%;
+  width: 100%;
 }
 
 .new-player-form {
@@ -113,4 +128,7 @@ button:disabled {
 .new-player-form input {
   padding: 0.75rem;
   border-radius: 8px;
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
 }

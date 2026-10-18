@@ -1,11 +1,12 @@
 .playing-card {
+  --card-width: clamp(56px, 16vm, 140px);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   place-items: center;
   grid-template-areas: "topleft . topright" ". center ." "bottomleft . bottomright";
-  width: 160px;
-  height: 224px;
+  width: var(--card-width);
+  aspect-ratio: 5 / 7;
   border: 2px solid #996515;
   border-radius: 8px;
   background: white;
@@ -33,14 +34,19 @@
   transform: rotate(180deg);
 }
 
+.playing-card {
+  color: #1a1a1a;
+  font-size: max(10px, calc(var(--card-width)) / 8);
+}
+
 .playing-card img {
-  width: 16px;
-  height: 16px;
+  width: 1em;
+  height: 1em;
 }
 
 .playing-card .suit-center img {
-  width: 36px;
-  height: 36px;
+  width: 2.25em;
+  height: 2.25em;
 }
 
 .playing-card.selected {
