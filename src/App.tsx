@@ -1,4 +1,3 @@
-import "./App.css";
 import { Routes, Route } from "react-router";
 import VelgSpiller from "./pages/VelgSpiller";
 import Regler from "./pages/Regler";

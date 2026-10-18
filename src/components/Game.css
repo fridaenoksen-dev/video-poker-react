@@ -10,7 +10,12 @@
 
 .game-info {
   display: flex;
+  justify-content: center;
   gap: 24px;
+  padding: 0.5rem 2rem;
+  border: 2px solid var(--color-gold);
+  border-radius: 8px;
+  background: var(--color-green-dark);
 }
 
 .game-controls {
@@ -22,5 +27,6 @@
 
 .hand {
   display: flex;
+  justify-content: center;
   gap: 16px;
 }

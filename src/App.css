@@ -1,5 +1,41 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-green: #0b5d3b;
+  --color-green-dark: #073d27;
+  --color-gold: #d4af37;
+  --color-burgundy: #7a1f2b;
+  --color-text: #f5f0e1;
+}
+
+body {
+  background-color: var(--color-green);
+  color: var(--color-text);
+  margin: 0;
+}
+
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Abril Fatface", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-gold);
+}
+
 a {
-  color: #d4af37;
+  color: var(--color-gold);
   text-decoration: none;
 }
 
@@ -7,20 +43,35 @@ a:hover {
   text-decoration: underline;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
 .nav {
   display: flex;
-  gap: 1.2rem;
-  padding: 2rem;
+  margin-bottom: 2rem;
   flex-direction: row;
-  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  border: 2px solid var(--color-gold);
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 0.75rem;
 }
 
 button {
   padding: 12px 28px;
   font-size: 14px;
   border-radius: 8px;
-  border: 2px solid #d4af37;
-  background: #7a1f2b;
+  border: 2px solid var(--color-gold);
+  background: var(--color-burgundy);
   color: #f5e9c8;
 }
 
@@ -35,6 +86,8 @@ button:disabled {
 
 .betting-buttons {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -44,6 +97,38 @@ button:disabled {
 }
 
 .betting-selected {
-  background: #d4af37;
+  background: var(--color-gold);
   color: #1a1a1a;
+}
+
+.player-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.player-list button {
+  width: 100%;
+}
+
+.new-player-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  max-width: 400px;
+  margin: 0 auto 1.5rem;
+}
+
+.new-player-form input {
+  padding: 0.75rem;
+  border-radius: 8px;
+  flex: 1;
+  min-width: 0;
+  font-size: 16px;
 }

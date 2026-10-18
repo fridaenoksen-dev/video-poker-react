@@ -112,10 +112,10 @@ export const useGameStore = create<GameStore>()(
         set((state) => {
           if (!state.roundActive) return {};
           const kept = state.hand.filter(
-            (card, index) => !state.selectedForDiscard.includes(index),
+            (_card, index) => !state.selectedForDiscard.includes(index),
           );
 
-          const removed = state.hand.filter((card, index) =>
+          const removed = state.hand.filter((_card, index) =>
             state.selectedForDiscard.includes(index),
           );
 

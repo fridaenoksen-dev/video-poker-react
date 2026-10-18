@@ -6,7 +6,6 @@ import TotalCoins from "./TotalCoins";
 import CurrentBet from "./CurrentBet";
 import "./Game.css";
 import { Link } from "react-router";
-import "../App.css";
 
 /**
  * The main gamoe board that shows the payout table,
@@ -24,7 +23,7 @@ function Game() {
   const currentBet = useGameStore((state) => state.currentBet);
 
   return (
-    <div className="game-board">
+    <div className="page game-board">
       <div className="nav">
         <Link to="/">Bytt spiller</Link>
         <Link to="/regler">Regler</Link>
